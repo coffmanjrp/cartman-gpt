@@ -7,7 +7,7 @@ Transform your polite text into Eric Cartman's speaking style! This web applicat
 - **Text Transformation**: Convert polite text into Cartman's sarcastic, self-centered style
 - **Sensor Levels**: Choose from three censorship levels:
   - **Mild**: Family-friendly (no profanity)
-  - **Medium**: Partial censorship (e.g., f**kin', b*tch)
+  - **Medium**: Partial censorship (e.g., f\**kin', b*tch)
   - **Raw**: Full uncensored Cartman
 - **Copy to Clipboard**: Easily copy transformed text
 - **Dark Mode Support**: Works with system theme preferences
@@ -22,27 +22,32 @@ Transform your polite text into Eric Cartman's speaking style! This web applicat
 ### Installation
 
 1. Clone the repository:
+
 ```bash
 git clone https://github.com/yourusername/cartmanify.git
 cd cartmanify
 ```
 
 2. Install dependencies:
+
 ```bash
 npm install
 ```
 
 3. Set up environment variables:
+
 ```bash
 cp .env.local.example .env.local
 ```
 
 4. Edit `.env.local` and add your OpenAI API key:
+
 ```
 OPENAI_API_KEY=your_openai_api_key_here
 ```
 
 5. Run the development server:
+
 ```bash
 npm run dev
 ```

@@ -27,7 +27,7 @@ const getSensorInstructions = (level: SensorLevel): string => {
     case 'mild':
       return 'Replace all profanity with full censorship (e.g., s***, f***, etc.) or avoid profanity entirely.';
     case 'medium':
-      return 'Use partial masking for profanity (e.g., f**kin\', b*tch, sh*t).';
+      return "Use partial masking for profanity (e.g., f**kin', b*tch, sh*t).";
     case 'raw':
       return 'Use full uncensored profanity as Cartman would naturally speak.';
     default:
@@ -44,10 +44,7 @@ export async function POST(request: NextRequest) {
 
     // Validate input
     if (!text || text.trim().length === 0) {
-      return NextResponse.json(
-        { error: 'Text is required' },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: 'Text is required' }, { status: 400 });
     }
 
     // Validate sensor level
@@ -70,10 +67,10 @@ Important: Only return the transformed text, nothing else.`;
 
     // Call OpenAI API
     const completion = await openai.chat.completions.create({
-      model: 'gpt-4-turbo-preview',
+      model: 'gpt-4-turbo',
       messages: [
         { role: 'system', content: systemPrompt },
-        { role: 'user', content: text }
+        { role: 'user', content: text },
       ],
       temperature: 0.8,
       max_tokens: 500,
@@ -89,10 +86,9 @@ Important: Only return the transformed text, nothing else.`;
     };
 
     return NextResponse.json(response);
-
   } catch (error) {
     console.error('Transform error:', error);
-    
+
     // Handle specific OpenAI errors
     if (error instanceof OpenAI.APIError) {
       if (error.status === 401) {

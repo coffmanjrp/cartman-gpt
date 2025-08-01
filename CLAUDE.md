@@ -2,7 +2,7 @@
 
 ## ✨ Overview
 
-"Cartmanify" is a web application that transforms polite English sentences into phrases spoken in the style of Eric Cartman from *South Park*, with an optional censorship level ("sensor level"). It uses the OpenAI API for natural language transformations.
+"Cartmanify" is a web application that transforms polite English sentences into phrases spoken in the style of Eric Cartman from _South Park_, with an optional censorship level ("sensor level"). It uses the OpenAI API for natural language transformations.
 
 ---
 
@@ -33,8 +33,8 @@
 | Sensor Level     | Allows user to choose censorship level: `Mild`, `Medium`, `Raw` | ✅     |
 | Copy Button      | Easily copy the transformed text                                | ✅     |
 | Dark Mode        | Automatic dark mode support                                     | ✅     |
-| Error Handling   | User-friendly error messages                                     | ✅     |
-| Loading States   | Visual feedback during transformation                            | ✅     |
+| Error Handling   | User-friendly error messages                                    | ✅     |
+| Loading States   | Visual feedback during transformation                           | ✅     |
 
 ---
 
@@ -51,6 +51,7 @@
 ## 🚀 Sample API Integration
 
 ### System Prompt
+
 ```
 You are Eric Cartman from South Park. Transform the user's input into your typical speaking style:
 - Be sarcastic, self-centered, and somewhat rude
@@ -98,6 +99,7 @@ cartmanify/
 **Method:** POST
 
 **Request Body:**
+
 ```typescript
 {
   text: string;           // Required: Text to transform
@@ -107,15 +109,17 @@ cartmanify/
 ```
 
 **Response:**
+
 ```typescript
 {
-  transformed: string;    // Cartman-style text
-  original: string;       // Original input
-  sensorLevel: string;    // Applied sensor level
+  transformed: string; // Cartman-style text
+  original: string; // Original input
+  sensorLevel: string; // Applied sensor level
 }
 ```
 
 **Error Responses:**
+
 - `400`: Invalid input or sensor level
 - `401`: Invalid OpenAI API key
 - `429`: Rate limit exceeded
@@ -158,12 +162,12 @@ npm run lint
 
 ## 📅 Implementation Status
 
-| Phase          | Tasks                                              | Status |
-| -------------- | -------------------------------------------------- | ------ |
-| **Phase 1**    | Project setup, dependencies, API route             | ✅     |
-| **Phase 2**    | UI implementation, sensor levels, styling          | ✅     |
-| **Phase 3**    | Error handling, loading states, copy feature       | ✅     |
-| **Phase 4**    | Documentation, environment setup, deployment ready | ✅     |
+| Phase       | Tasks                                              | Status |
+| ----------- | -------------------------------------------------- | ------ |
+| **Phase 1** | Project setup, dependencies, API route             | ✅     |
+| **Phase 2** | UI implementation, sensor levels, styling          | ✅     |
+| **Phase 3** | Error handling, loading states, copy feature       | ✅     |
+| **Phase 4** | Documentation, environment setup, deployment ready | ✅     |
 
 ---
 

@@ -62,9 +62,7 @@ export default function Home() {
       {/* Header */}
       <header className="bg-white dark:bg-gray-900 shadow-sm">
         <div className="max-w-4xl mx-auto px-4 py-6">
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
-            Cartmanify
-          </h1>
+          <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Cartmanify</h1>
           <p className="text-gray-600 dark:text-gray-400 mt-2">
             Transform your polite text into Eric Cartman&apos;s speaking style
           </p>
@@ -76,7 +74,10 @@ export default function Home() {
         <div className="space-y-6">
           {/* Input Section */}
           <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
-            <label htmlFor="input" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+            <label
+              htmlFor="input"
+              className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+            >
               Your polite text
             </label>
             <textarea
@@ -105,9 +106,7 @@ export default function Home() {
                     onChange={(e) => setSensorLevel(e.target.value as SensorLevel)}
                     className="mr-2 text-blue-600 focus:ring-blue-500"
                   />
-                  <span className="text-gray-700 dark:text-gray-300 capitalize">
-                    {level}
-                  </span>
+                  <span className="text-gray-700 dark:text-gray-300 capitalize">{level}</span>
                   <span className="ml-2 text-sm text-gray-500 dark:text-gray-400">
                     {level === 'mild' && '(Family friendly)'}
                     {level === 'medium' && '(Partial censorship)'}
@@ -151,9 +150,7 @@ export default function Home() {
                 </button>
               </div>
               <div className="bg-gray-50 dark:bg-gray-700 rounded-md p-4">
-                <p className="text-gray-800 dark:text-gray-200 whitespace-pre-wrap">
-                  {outputText}
-                </p>
+                <p className="text-gray-800 dark:text-gray-200 whitespace-pre-wrap">{outputText}</p>
               </div>
             </div>
           )}
@@ -162,9 +159,7 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="mt-auto py-6 text-center text-gray-500 dark:text-gray-400 text-sm">
-        <p>
-          Made with Next.js and OpenAI | Not affiliated with South Park
-        </p>
+        <p>Made with Next.js and OpenAI | Not affiliated with South Park</p>
       </footer>
     </div>
   );
