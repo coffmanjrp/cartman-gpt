@@ -14,14 +14,14 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Cartmanify - Transform Text to Eric Cartman Style',
+  title: 'Cartman-GPT - Chat with Eric Cartman',
   description:
-    "Transform your polite text into Eric Cartman's speaking style from South Park. Choose your censorship level and get instant results.",
-  keywords: ['South Park', 'Eric Cartman', 'text transformer', 'funny', 'entertainment'],
-  authors: [{ name: 'Cartmanify' }],
+    "Have a conversation with Eric Cartman from South Park. Experience his sarcastic, self-centered personality in an AI chat interface.",
+  keywords: ['South Park', 'Eric Cartman', 'AI chat', 'chatbot', 'funny', 'entertainment'],
+  authors: [{ name: 'Cartman-GPT' }],
   openGraph: {
-    title: 'Cartmanify - Transform Text to Eric Cartman Style',
-    description: "Transform your polite text into Eric Cartman's speaking style",
+    title: 'Cartman-GPT - Chat with Eric Cartman',
+    description: "Have a conversation with Eric Cartman from South Park",
     type: 'website',
   },
 };

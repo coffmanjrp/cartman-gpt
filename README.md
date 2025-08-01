@@ -1,15 +1,17 @@
-# Cartmanify
+# Cartman-GPT
 
-Transform your polite text into Eric Cartman's speaking style! This web application uses OpenAI's API to convert formal or polite English into phrases spoken in the style of Eric Cartman from South Park.
+Chat with Eric Cartman from South Park! This AI-powered chat application lets you have conversations with everyone's favorite self-centered, manipulative, and hilariously offensive fourth-grader.
 
 ## Features
 
-- **Text Transformation**: Convert polite text into Cartman's sarcastic, self-centered style
-- **Sensor Levels**: Choose from three censorship levels:
+- **AI Chat Interface**: Have real-time conversations with Cartman
+- **Authentic Personality**: Responses include Cartman's signature catchphrases, dramatic reactions, and egotistical behavior
+- **Sensor Levels**: Choose your comfort level with profanity:
   - **Mild**: Family-friendly (no profanity)
-  - **Medium**: Partial censorship (e.g., f\**kin', b*tch)
+  - **Medium**: Partial censorship (e.g., f**kin', b*tch)
   - **Raw**: Full uncensored Cartman
-- **Copy to Clipboard**: Easily copy transformed text
+- **Chat History**: View and revisit your previous conversations
+- **Modern UI**: Clean chat interface inspired by popular AI chat applications
 - **Dark Mode Support**: Works with system theme preferences
 
 ## Getting Started
@@ -24,8 +26,8 @@ Transform your polite text into Eric Cartman's speaking style! This web applicat
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/yourusername/cartmanify.git
-cd cartmanify
+git clone https://github.com/yourusername/cartman-gpt.git
+cd cartman-gpt
 ```
 
 2. Install dependencies:
@@ -58,21 +60,26 @@ npm run dev
 
 - **Frontend**: Next.js 15, React 19, TypeScript
 - **Styling**: Tailwind CSS v4
-- **API**: OpenAI GPT-4 Turbo
+- **AI**: OpenAI GPT-4o-mini
 - **Deployment**: Vercel (recommended)
 
 ## Usage
 
-1. Enter your polite or formal text in the input field
-2. Select your preferred sensor level
-3. Click "Transform to Cartman"
-4. Copy the transformed text using the clipboard button
+1. Type your message in the input field at the bottom
+2. Press Enter or click the send button
+3. Cartman will respond in his characteristic style
+4. Adjust the sensor level in the sidebar if needed
+5. View your chat history in the sidebar
 
-## Example
+## Example Conversations
 
-**Input**: "Thank you. We are happy with the information you provided. Please close the ticket at your convenience."
+**You**: "Hi Cartman, how are you today?"
 
-**Output (Medium)**: "Yeah, thanks or whatever. I guess the info you gave us is good enough, so just close the damn ticket whenever you feel like it. Appreciate the help, I guess... just don't screw it up next time."
+**Cartman**: "Oh, I'm just FANTASTIC! You know, just being awesome as usual while everyone else is being totally lame. Why do you care anyway? Unless you brought me some KFC, I don't have time for your stupid questions!"
+
+**You**: "I need help with my homework."
+
+**Cartman**: "Homework?! Seriously?! I don't do homework, that's for poor kids and hippies! Besides, I'm way too busy with more important things, like my genius business ventures. But I GUESS I could help you... for the right price. What's in it for me?"
 
 ## Deployment
 
@@ -89,7 +96,7 @@ Feel free to submit issues and enhancement requests!
 
 ## Disclaimer
 
-This project is for entertainment purposes only and is not affiliated with South Park or Comedy Central.
+This project is for entertainment purposes only and is not affiliated with South Park, Comedy Central, or Eric Cartman's voice actor. All character rights belong to their respective owners.
 
 ## License
 

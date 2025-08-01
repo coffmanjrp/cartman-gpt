@@ -15,6 +15,7 @@ const MAX_HISTORY_ITEMS = 5;
 
 export function useTransformHistory() {
   const [history, setHistory] = useState<TransformHistoryItem[]>([]);
+  const [mounted, setMounted] = useState(false);
 
   // Load history from localStorage on mount
   useEffect(() => {
@@ -30,17 +31,20 @@ export function useTransformHistory() {
       }
     };
 
+    setMounted(true);
     loadHistory();
   }, []);
 
   // Save history to localStorage whenever it changes
   useEffect(() => {
+    if (!mounted) return;
+    
     try {
       localStorage.setItem(HISTORY_KEY, JSON.stringify(history));
     } catch (error) {
       console.error('Failed to save history:', error);
     }
-  }, [history]);
+  }, [history, mounted]);
 
   const addToHistory = (item: Omit<TransformHistoryItem, 'id' | 'timestamp'>) => {
     const newItem: TransformHistoryItem = {

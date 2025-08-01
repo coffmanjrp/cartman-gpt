@@ -1,8 +1,8 @@
-# Cartmanify Web App Documentation
+# Cartman-GPT Documentation
 
 ## ✨ Overview
 
-"Cartmanify" is a web application that transforms polite English sentences into phrases spoken in the style of Eric Cartman from _South Park_, with an optional censorship level ("sensor level"). It uses the OpenAI API for natural language transformations.
+"Cartman-GPT" is an AI-powered chat application that lets users have conversations with Eric Cartman from *South Park*. The app uses OpenAI's GPT model to generate authentic Cartman-style responses, complete with his signature personality traits, catchphrases, and optional profanity levels.
 
 ---
 
@@ -18,7 +18,7 @@
 ### Backend
 
 - **API Route**: Next.js App Router (`/api/transform`)
-- **AI Integration**: OpenAI API (GPT-4.1 nano)
+- **AI Integration**: OpenAI API (GPT-4o-mini)
 - **Runtime**: Node.js 18+
 
 ---
@@ -27,18 +27,18 @@
 
 | Feature            | Description                                                     | Status |
 | ------------------ | --------------------------------------------------------------- | ------ |
-| Text Input         | User enters polite or formal English text                       | ✅     |
-| Transform Button   | Sends input to OpenAI API for conversion                        | ✅     |
-| Output Display     | Displays the converted Cartman-style text                       | ✅     |
-| Sensor Level       | Allows user to choose censorship level: `Mild`, `Medium`, `Raw` | ✅     |
-| Copy Button        | Easily copy the transformed text with success feedback          | ✅     |
+| AI Chat Interface  | Real-time conversation with Cartman character                   | ✅     |
+| Message History    | Chat messages displayed in conversation format                  | ✅     |
+| Sensor Level       | Choose censorship level: `Mild`, `Medium`, `Raw`               | ✅     |
+| Chat Sidebar       | Contains sensor level settings and conversation history         | ✅     |
 | Theme Switcher     | Toggle between light and dark modes                             | ✅     |
-| Error Handling     | User-friendly error messages with retry button                  | ✅     |
-| Loading States     | Visual feedback during transformation                           | ✅     |
-| Character Counter  | Shows remaining characters (500 max)                            | ✅     |
-| Sample Texts       | Pre-loaded example texts for testing                            | ✅     |
-| Transform History  | Stores last 5 transformations in localStorage                   | ✅     |
-| Keyboard Shortcuts | Ctrl+Enter to transform, Esc to clear                           | ✅     |
+| Error Handling     | User-friendly error messages in chat                            | ✅     |
+| Loading States     | Typing indicator while Cartman responds                         | ✅     |
+| Character Counter  | Shows remaining characters (500 max) in input                   | ✅     |
+| Sample Texts       | Pre-loaded conversation starters                                | ✅     |
+| Chat History       | Stores last 5 conversations in localStorage                     | ✅     |
+| Keyboard Shortcuts | Enter to send, Shift+Enter for newline, Esc to clear          | ✅     |
+| Responsive Design  | Mobile-friendly with collapsible sidebar                        | ✅     |
 
 ---
 
@@ -57,33 +57,43 @@
 ### System Prompt
 
 ```
-You are Eric Cartman from South Park. Transform the user's input into your typical speaking style:
-- Be sarcastic, self-centered, and somewhat rude
-- Maintain the original meaning but add your personality
-- Use exaggerated reactions and dramatic statements
-- Include your catchphrases when appropriate (e.g., "Screw you guys", "Respect my authoritah!")
+You are Eric Cartman from South Park. You're having a conversation with someone. Respond to their message in your typical style:
+- Be sarcastic, self-centered, egotistical, and manipulative
+- React dramatically to everything - you're either the victim or the hero, never in between
+- Use your catchphrases when appropriate (e.g., "Screw you guys", "Respect my authoritah!", "But meeeeem!", "I'm not fat, I'm big-boned!")
+- Show your obsessions: KFC, being in charge, getting what you want, scheming
+- Be dismissive of others' feelings while being overly sensitive about your own
+- Sometimes go on tangents about your elaborate plans or conspiracy theories
 - [Sensor level instructions based on selection]
+
+Remember: You're responding in a conversation, not just transforming text. React to what they're saying as Cartman would.
 ```
 
-### Example Transformation
+### Example Conversation
 
-**User Input:** "Thank you. We are happy with the information you provided. Please close the ticket at your convenience."
+**User:** "Hi Cartman, how are you today?"
 
-**Transformed Output (Medium):** "Yeah, thanks or whatever. I guess the info you gave us is good enough, so just close the damn ticket whenever you feel like it. Appreciate the help, I guess... just don't screw it up next time."
+**Cartman (Medium):** "Oh, I'm just FANTASTIC! You know, just being awesome as usual while everyone else is being totally lame. Why do you care anyway? Unless you brought me some KFC, I don't have time for your stupid questions!"
+
+**User:** "I need help with my homework."
+
+**Cartman (Medium):** "Homework?! Seriously?! I don't do homework, that's for poor kids and hippies! Besides, I'm way too busy with more important things, like my genius business ventures. But I GUESS I could help you... for the right price. What's in it for me?"
 
 ---
 
 ## 📚 Project Structure
 
 ```
-cartmanify/
+cartman-gpt/
 ├── app/
 │   ├── api/
 │   │   └── transform/
 │   │       └── route.ts        # OpenAI API integration
 │   ├── components/
-│   │   ├── TextArea.tsx       # Input component with character counter
-│   │   ├── OutputDisplay.tsx  # Output display with copy feedback
+│   │   ├── Sidebar.tsx        # Sidebar with settings and history
+│   │   ├── MessageList.tsx    # Chat message display
+│   │   ├── ChatMessage.tsx    # Individual message component
+│   │   ├── InputArea.tsx      # Bottom input area
 │   │   ├── TransformHistory.tsx # History display component
 │   │   └── ThemeToggle.tsx    # Theme switcher component
 │   ├── contexts/
@@ -199,6 +209,7 @@ npm run format:check
 | **Phase 5** | Interface improvements (history, shortcuts, theme switcher) | ✅     |
 | **Phase 6** | Code quality (ESLint, Prettier, TypeScript)                 | ✅     |
 | **Phase 7** | OpenAI API integration and testing                          | ✅     |
+| **Phase 8** | Conversion to chat interface (Cartman-GPT)                  | ✅     |
 
 ---
 
@@ -224,7 +235,7 @@ npm run format:check
 - The app uses Next.js 15 App Router for modern React Server Components
 - Tailwind CSS v4 provides efficient styling with class-based dark mode support
 - TypeScript ensures type safety throughout the application
-- The OpenAI integration uses GPT-4.1 nano model
+- The OpenAI integration uses GPT-4o-mini model for conversational AI
 - Error boundaries and proper error handling ensure a smooth user experience
 - Component-based architecture for maintainability and reusability
 - Custom hooks for state management and keyboard shortcuts

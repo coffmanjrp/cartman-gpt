@@ -31,12 +31,12 @@ export default function TransformHistory({
   };
 
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
-      <div className="flex justify-between items-center mb-4">
+    <div>
+      <div className="flex justify-between items-center mb-3">
         <h3 className="text-sm font-medium text-gray-700 dark:text-gray-300">Recent Transforms</h3>
         <button
           onClick={onClearHistory}
-          className="text-sm text-red-600 hover:text-red-700 dark:text-red-400 dark:hover:text-red-300"
+          className="text-xs text-red-600 hover:text-red-700 dark:text-red-400 dark:hover:text-red-300"
         >
           Clear all
         </button>
@@ -45,12 +45,12 @@ export default function TransformHistory({
         {history.map((item) => (
           <div
             key={item.id}
-            className="border border-gray-200 dark:border-gray-700 rounded-md p-3 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+            className="border border-gray-200 dark:border-gray-700 rounded-md p-3 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors overflow-hidden"
           >
             <div className="flex justify-between items-start">
-              <button onClick={() => onSelectItem(item)} className="flex-1 text-left">
-                <p className="text-sm text-gray-600 dark:text-gray-400 truncate">{item.original}</p>
-                <p className="text-sm font-medium text-gray-900 dark:text-white mt-1 truncate">
+              <button onClick={() => onSelectItem(item)} className="flex-1 text-left min-w-0">
+                <p className="text-sm text-gray-600 dark:text-gray-400 line-clamp-1">{item.original}</p>
+                <p className="text-sm font-medium text-gray-900 dark:text-white mt-1 line-clamp-2">
                   {item.transformed}
                 </p>
                 <div className="flex items-center gap-2 mt-2">
