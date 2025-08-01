@@ -25,16 +25,20 @@
 
 ## 🌐 Core Features
 
-| Feature          | Description                                                     | Status |
-| ---------------- | --------------------------------------------------------------- | ------ |
-| Text Input       | User enters polite or formal English text                       | ✅     |
-| Transform Button | Sends input to OpenAI API for conversion                        | ✅     |
-| Output Display   | Displays the converted Cartman-style text                       | ✅     |
-| Sensor Level     | Allows user to choose censorship level: `Mild`, `Medium`, `Raw` | ✅     |
-| Copy Button      | Easily copy the transformed text                                | ✅     |
-| Dark Mode        | Automatic dark mode support                                     | ✅     |
-| Error Handling   | User-friendly error messages                                    | ✅     |
-| Loading States   | Visual feedback during transformation                           | ✅     |
+| Feature            | Description                                                     | Status |
+| ------------------ | --------------------------------------------------------------- | ------ |
+| Text Input         | User enters polite or formal English text                       | ✅     |
+| Transform Button   | Sends input to OpenAI API for conversion                        | ✅     |
+| Output Display     | Displays the converted Cartman-style text                       | ✅     |
+| Sensor Level       | Allows user to choose censorship level: `Mild`, `Medium`, `Raw` | ✅     |
+| Copy Button        | Easily copy the transformed text with success feedback         | ✅     |
+| Theme Switcher     | Toggle between light and dark modes                            | ✅     |
+| Error Handling     | User-friendly error messages with retry button                 | ✅     |
+| Loading States     | Visual feedback during transformation                           | ✅     |
+| Character Counter  | Shows remaining characters (500 max)                            | ✅     |
+| Sample Texts       | Pre-loaded example texts for testing                           | ✅     |
+| Transform History  | Stores last 5 transformations in localStorage                  | ✅     |
+| Keyboard Shortcuts | Ctrl+Enter to transform, Esc to clear                          | ✅     |
 
 ---
 
@@ -77,16 +81,31 @@ cartmanify/
 │   ├── api/
 │   │   └── transform/
 │   │       └── route.ts        # OpenAI API integration
-│   ├── globals.css             # Global styles
-│   ├── layout.tsx              # Root layout
+│   ├── components/
+│   │   ├── TextArea.tsx       # Input component with character counter
+│   │   ├── OutputDisplay.tsx  # Output display with copy feedback
+│   │   ├── TransformHistory.tsx # History display component
+│   │   └── ThemeToggle.tsx    # Theme switcher component
+│   ├── contexts/
+│   │   └── ThemeContext.tsx   # Theme management context
+│   ├── hooks/
+│   │   ├── useTransformHistory.ts   # History management hook
+│   │   └── useKeyboardShortcuts.ts  # Keyboard shortcuts hook
+│   ├── constants/
+│   │   └── sampleTexts.ts     # Sample text definitions
+│   ├── globals.css             # Global styles with Tailwind CSS v4
+│   ├── layout.tsx              # Root layout with theme provider
 │   └── page.tsx                # Main UI component
 ├── public/                     # Static assets
 ├── .env.local.example          # Environment variables template
 ├── .gitignore                  # Git ignore rules
+├── .prettierrc                 # Prettier configuration
 ├── CLAUDE.md                   # This file
 ├── README.md                   # User documentation
 ├── package.json                # Dependencies
-├── tailwind.config.ts          # Tailwind configuration
+├── postcss.config.mjs          # PostCSS configuration
+├── eslint.config.mjs           # ESLint configuration
+├── next.config.ts              # Next.js configuration
 └── tsconfig.json               # TypeScript configuration
 ```
 
@@ -144,6 +163,15 @@ npm start
 
 # Run linter
 npm run lint
+
+# Run TypeScript type checking
+npm run typecheck
+
+# Format code with Prettier
+npm run format
+
+# Check code formatting
+npm run format:check
 ```
 
 ---
@@ -162,12 +190,14 @@ npm run lint
 
 ## 📅 Implementation Status
 
-| Phase       | Tasks                                              | Status |
-| ----------- | -------------------------------------------------- | ------ |
-| **Phase 1** | Project setup, dependencies, API route             | ✅     |
-| **Phase 2** | UI implementation, sensor levels, styling          | ✅     |
-| **Phase 3** | Error handling, loading states, copy feature       | ✅     |
-| **Phase 4** | Documentation, environment setup, deployment ready | ✅     |
+| Phase       | Tasks                                                       | Status |
+| ----------- | ----------------------------------------------------------- | ------ |
+| **Phase 1** | Project setup, dependencies, API route                      | ✅     |
+| **Phase 2** | UI implementation, sensor levels, styling                   | ✅     |
+| **Phase 3** | Error handling, loading states, copy feature                | ✅     |
+| **Phase 4** | Documentation, environment setup, deployment ready          | ✅     |
+| **Phase 5** | Interface improvements (history, shortcuts, theme switcher) | ✅     |
+| **Phase 6** | Code quality (ESLint, Prettier, TypeScript)                | ✅     |
 
 ---
 
@@ -191,9 +221,14 @@ npm run lint
 ## 📝 Development Notes
 
 - The app uses Next.js 15 App Router for modern React Server Components
-- Tailwind CSS v4 provides efficient styling with dark mode support
+- Tailwind CSS v4 provides efficient styling with class-based dark mode support
 - TypeScript ensures type safety throughout the application
 - The OpenAI integration uses GPT-4 Turbo for best results
 - Error boundaries and proper error handling ensure a smooth user experience
+- Component-based architecture for maintainability and reusability
+- Custom hooks for state management and keyboard shortcuts
+- Theme persistence with localStorage
+- ESLint and Prettier configured for code quality
+- Responsive design works on all device sizes
 
 ---

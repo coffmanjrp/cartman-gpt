@@ -1,6 +1,13 @@
 'use client';
 
 import { useState } from 'react';
+import TextArea from './components/TextArea';
+import OutputDisplay from './components/OutputDisplay';
+import TransformHistory from './components/TransformHistory';
+import { useTransformHistory, TransformHistoryItem } from './hooks/useTransformHistory';
+import { useKeyboardShortcuts } from './hooks/useKeyboardShortcuts';
+import { sampleTexts } from './constants/sampleTexts';
+import ThemeToggle from './components/ThemeToggle';
 
 type SensorLevel = 'mild' | 'medium' | 'raw';
 
@@ -10,6 +17,9 @@ export default function Home() {
   const [sensorLevel, setSensorLevel] = useState<SensorLevel>('medium');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
+  const [retryCount, setRetryCount] = useState(0);
+
+  const { history, addToHistory, clearHistory, removeFromHistory } = useTransformHistory();
 
   const handleTransform = async () => {
     if (!inputText.trim()) {
@@ -39,33 +49,74 @@ export default function Home() {
       }
 
       setOutputText(data.transformed);
+
+      // Add to history
+      addToHistory({
+        original: inputText,
+        transformed: data.transformed,
+        sensorLevel,
+      });
+
+      // Reset retry count on success
+      setRetryCount(0);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Something went wrong');
+      setRetryCount((prev) => prev + 1);
     } finally {
       setIsLoading(false);
     }
   };
 
-  const handleCopy = async () => {
-    if (outputText) {
-      try {
-        await navigator.clipboard.writeText(outputText);
-        // You could add a toast notification here
-      } catch (err) {
-        console.error('Failed to copy:', err);
-      }
-    }
+  const handleSampleText = () => {
+    const randomSample = sampleTexts[Math.floor(Math.random() * sampleTexts.length)];
+    setInputText(randomSample.text);
+    setError('');
   };
 
+  const handleClear = () => {
+    setInputText('');
+    setOutputText('');
+    setError('');
+    setRetryCount(0);
+  };
+
+  const handleNewTransform = () => {
+    setOutputText('');
+    setError('');
+    setRetryCount(0);
+  };
+
+  const handleSelectHistoryItem = (item: TransformHistoryItem) => {
+    setInputText(item.original);
+    setOutputText(item.transformed);
+    setSensorLevel(item.sensorLevel);
+    setError('');
+  };
+
+  const handleRetry = () => {
+    handleTransform();
+  };
+
+  // Use keyboard shortcuts
+  useKeyboardShortcuts({
+    onTransform: handleTransform,
+    onClear: handleClear,
+  });
+
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
+    <div className="min-h-screen bg-white dark:bg-gray-900">
       {/* Header */}
       <header className="bg-white dark:bg-gray-900 shadow-sm">
         <div className="max-w-4xl mx-auto px-4 py-6">
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Cartmanify</h1>
-          <p className="text-gray-600 dark:text-gray-400 mt-2">
-            Transform your polite text into Eric Cartman&apos;s speaking style
-          </p>
+          <div className="flex justify-between items-start">
+            <div>
+              <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Cartmanify</h1>
+              <p className="text-gray-600 dark:text-gray-400 mt-2">
+                Transform your polite text into Eric Cartman&apos;s speaking style
+              </p>
+            </div>
+            <ThemeToggle />
+          </div>
         </div>
       </header>
 
@@ -80,14 +131,7 @@ export default function Home() {
             >
               Your polite text
             </label>
-            <textarea
-              id="input"
-              rows={4}
-              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-white"
-              placeholder="Enter your polite text here..."
-              value={inputText}
-              onChange={(e) => setInputText(e.target.value)}
-            />
+            <TextArea value={inputText} onChange={setInputText} onSampleText={handleSampleText} />
           </div>
 
           {/* Sensor Level Selection */}
@@ -131,35 +175,48 @@ export default function Home() {
           {/* Error Message */}
           {error && (
             <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 text-red-700 dark:text-red-400 px-4 py-3 rounded-md">
-              {error}
+              <div className="flex justify-between items-center">
+                <span>{error}</span>
+                {retryCount > 0 && (
+                  <button onClick={handleRetry} className="text-sm underline hover:no-underline">
+                    Retry
+                  </button>
+                )}
+              </div>
             </div>
           )}
 
           {/* Output Section */}
-          {outputText && (
-            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
-              <div className="flex justify-between items-center mb-2">
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                  Cartman says:
-                </label>
-                <button
-                  onClick={handleCopy}
-                  className="text-sm text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300"
-                >
-                  Copy to clipboard
-                </button>
-              </div>
-              <div className="bg-gray-50 dark:bg-gray-700 rounded-md p-4">
-                <p className="text-gray-800 dark:text-gray-200 whitespace-pre-wrap">{outputText}</p>
-              </div>
-            </div>
-          )}
+          {outputText && <OutputDisplay text={outputText} onNewTransform={handleNewTransform} />}
+
+          {/* History Section */}
+          <TransformHistory
+            history={history}
+            onSelectItem={handleSelectHistoryItem}
+            onRemoveItem={removeFromHistory}
+            onClearHistory={clearHistory}
+          />
         </div>
       </main>
 
       {/* Footer */}
       <footer className="mt-auto py-6 text-center text-gray-500 dark:text-gray-400 text-sm">
         <p>Made with Next.js and OpenAI | Not affiliated with South Park</p>
+        <p className="mt-2 text-xs">
+          Keyboard shortcuts:{' '}
+          <kbd className="px-1.5 py-0.5 text-xs font-semibold text-gray-800 bg-gray-100 border border-gray-200 rounded dark:bg-gray-800 dark:text-gray-100 dark:border-gray-600">
+            Ctrl
+          </kbd>
+          {' + '}
+          <kbd className="px-1.5 py-0.5 text-xs font-semibold text-gray-800 bg-gray-100 border border-gray-200 rounded dark:bg-gray-800 dark:text-gray-100 dark:border-gray-600">
+            Enter
+          </kbd>
+          {' to transform, '}
+          <kbd className="px-1.5 py-0.5 text-xs font-semibold text-gray-800 bg-gray-100 border border-gray-200 rounded dark:bg-gray-800 dark:text-gray-100 dark:border-gray-600">
+            Esc
+          </kbd>
+          {' to clear'}
+        </p>
       </footer>
     </div>
   );
