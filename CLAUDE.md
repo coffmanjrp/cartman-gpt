@@ -10,26 +10,31 @@
 
 ### Frontend
 
-- **Framework**: Next.js
+- **Framework**: Next.js 15.4.5
 - **Language**: TypeScript
-- **Styling**: Tailwind CSS
+- **Styling**: Tailwind CSS v4
+- **UI Library**: React 19.1.0
 
-### Backend (Optional)
+### Backend
 
-- **OpenAI API** for Cartman-style transformation
-- Could be integrated client-side or with a lightweight API route in Next.js (`/api/cartmanify`)
+- **API Route**: Next.js App Router (`/api/transform`)
+- **AI Integration**: OpenAI API (GPT-4 Turbo)
+- **Runtime**: Node.js 18+
 
 ---
 
 ## 🌐 Core Features
 
-| Feature          | Description                                                     |
-| ---------------- | --------------------------------------------------------------- |
-| Text Input       | User enters polite or formal English text                       |
-| Transform Button | Sends input to OpenAI API for conversion                        |
-| Output Display   | Displays the converted Cartman-style text                       |
-| Sensor Level     | Allows user to choose censorship level: `Mild`, `Medium`, `Raw` |
-| Copy Button      | Easily copy the transformed text                                |
+| Feature          | Description                                                     | Status |
+| ---------------- | --------------------------------------------------------------- | ------ |
+| Text Input       | User enters polite or formal English text                       | ✅     |
+| Transform Button | Sends input to OpenAI API for conversion                        | ✅     |
+| Output Display   | Displays the converted Cartman-style text                       | ✅     |
+| Sensor Level     | Allows user to choose censorship level: `Mild`, `Medium`, `Raw` | ✅     |
+| Copy Button      | Easily copy the transformed text                                | ✅     |
+| Dark Mode        | Automatic dark mode support                                     | ✅     |
+| Error Handling   | User-friendly error messages                                     | ✅     |
+| Loading States   | Visual feedback during transformation                            | ✅     |
 
 ---
 
@@ -43,50 +48,148 @@
 
 ---
 
-## 🚀 Sample Prompt to OpenAI
+## 🚀 Sample API Integration
 
-**System Prompt:** "You are Eric Cartman from South Park. Rewrite user input in your typical sarcastic, self-centered, and rude tone. Make sure it sounds like Cartman speaking. Maintain meaning but exaggerate personality. Use censorship according to the selected sensor level: `Mild`, `Medium`, or `Raw`."
+### System Prompt
+```
+You are Eric Cartman from South Park. Transform the user's input into your typical speaking style:
+- Be sarcastic, self-centered, and somewhat rude
+- Maintain the original meaning but add your personality
+- Use exaggerated reactions and dramatic statements
+- Include your catchphrases when appropriate (e.g., "Screw you guys", "Respect my authoritah!")
+- [Sensor level instructions based on selection]
+```
 
-**User Input Example:** "Thank you. We are happy with the information you provided. Please close the ticket at your convenience."
+### Example Transformation
 
-**Transformed Output (Medium):** "Yeah, thanks or whatever. I guess the info you gave us is good enough, so just close the damn ticket whenever you feel like it. Appreciate the help, I guess... just don’t screw it up next time."
+**User Input:** "Thank you. We are happy with the information you provided. Please close the ticket at your convenience."
+
+**Transformed Output (Medium):** "Yeah, thanks or whatever. I guess the info you gave us is good enough, so just close the damn ticket whenever you feel like it. Appreciate the help, I guess... just don't screw it up next time."
 
 ---
 
-## 📚 Folder Structure (example) 
+## 📚 Project Structure
 
 ```
 cartmanify/
-## WIP
+├── app/
+│   ├── api/
+│   │   └── transform/
+│   │       └── route.ts        # OpenAI API integration
+│   ├── globals.css             # Global styles
+│   ├── layout.tsx              # Root layout
+│   └── page.tsx                # Main UI component
+├── public/                     # Static assets
+├── .env.local.example          # Environment variables template
+├── .gitignore                  # Git ignore rules
+├── CLAUDE.md                   # This file
+├── README.md                   # User documentation
+├── package.json                # Dependencies
+├── tailwind.config.ts          # Tailwind configuration
+└── tsconfig.json               # TypeScript configuration
 ```
 
 ---
 
-## 🚪 API Integration (simplified)
+## 🚪 API Route Details
 
-```ts
-WIP
+### Endpoint: `/api/transform`
+
+**Method:** POST
+
+**Request Body:**
+```typescript
+{
+  text: string;           // Required: Text to transform
+  sensorLevel: 'mild' | 'medium' | 'raw';  // Optional: Default 'medium'
+  character?: string;     // Optional: For future expansion
+}
+```
+
+**Response:**
+```typescript
+{
+  transformed: string;    // Cartman-style text
+  original: string;       // Original input
+  sensorLevel: string;    // Applied sensor level
+}
+```
+
+**Error Responses:**
+- `400`: Invalid input or sensor level
+- `401`: Invalid OpenAI API key
+- `429`: Rate limit exceeded
+- `500`: Server error
+
+---
+
+## 🔧 Development Commands
+
+```bash
+# Install dependencies
+npm install
+
+# Run development server
+npm run dev
+
+# Build for production
+npm run build
+
+# Start production server
+npm start
+
+# Run linter
+npm run lint
 ```
 
 ---
 
 ## 🌟 Future Enhancements
 
-- Language toggle (for multilingual Cartman?)
-- Character switcher (Kyle, Stan, Kenny)
-- History panel or save feature
-- Audio synthesis (Cartman voice)
+- **Character Expansion**: Add Kyle, Stan, Kenny, and other characters
+- **History Feature**: Save and view previous transformations
+- **Voice Synthesis**: Generate audio with Cartman's voice
+- **Share Feature**: Share transformations on social media
+- **API Rate Limiting**: Implement user-based rate limiting
+- **Batch Processing**: Transform multiple texts at once
+- **Chrome Extension**: Quick transform from any webpage
 
 ---
 
-## 📅 Project Timeline (Suggested)
+## 📅 Implementation Status
 
-| Phase  | Tasks                                             |
-| ------ | ------------------------------------------------- |
-| Week 1 | Setup project, build UI, local transform function |
-| Week 2 | Integrate OpenAI API, sensor level support        |
-| Week 3 | UI polish, mobile responsive, deploy to Vercel    |
-| Week 4 | Testing, feedback loop, optional audio support    |
+| Phase          | Tasks                                              | Status |
+| -------------- | -------------------------------------------------- | ------ |
+| **Phase 1**    | Project setup, dependencies, API route             | ✅     |
+| **Phase 2**    | UI implementation, sensor levels, styling          | ✅     |
+| **Phase 3**    | Error handling, loading states, copy feature       | ✅     |
+| **Phase 4**    | Documentation, environment setup, deployment ready | ✅     |
 
 ---
 
+## 🚀 Deployment Notes
+
+1. **Environment Variables Required:**
+   - `OPENAI_API_KEY`: Your OpenAI API key
+
+2. **Recommended Platforms:**
+   - Vercel (zero-config deployment)
+   - Any Node.js 18+ hosting platform
+
+3. **Production Considerations:**
+   - Implement rate limiting
+   - Add monitoring/logging
+   - Consider caching for common phrases
+   - Set up proper CORS if needed
+
+---
+
+## 📝 Development Notes
+
+- The app uses Next.js 15 App Router for modern React Server Components
+- Tailwind CSS v4 provides efficient styling with dark mode support
+- TypeScript ensures type safety throughout the application
+- The OpenAI integration uses GPT-4 Turbo for best results
+- Error boundaries and proper error handling ensure a smooth user experience
+
+---
