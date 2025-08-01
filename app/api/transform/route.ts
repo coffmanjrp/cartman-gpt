@@ -67,7 +67,7 @@ Important: Only return the transformed text, nothing else.`;
 
     // Call OpenAI API
     const completion = await openai.chat.completions.create({
-      model: 'gpt-4-turbo',
+      model: 'gpt-4.1-nano',
       messages: [
         { role: 'system', content: systemPrompt },
         { role: 'user', content: text },

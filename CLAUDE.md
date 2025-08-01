@@ -18,7 +18,7 @@
 ### Backend
 
 - **API Route**: Next.js App Router (`/api/transform`)
-- **AI Integration**: OpenAI API (GPT-4 Turbo)
+- **AI Integration**: OpenAI API (GPT-4.1 nano)
 - **Runtime**: Node.js 18+
 
 ---
@@ -31,14 +31,14 @@
 | Transform Button   | Sends input to OpenAI API for conversion                        | ✅     |
 | Output Display     | Displays the converted Cartman-style text                       | ✅     |
 | Sensor Level       | Allows user to choose censorship level: `Mild`, `Medium`, `Raw` | ✅     |
-| Copy Button        | Easily copy the transformed text with success feedback         | ✅     |
-| Theme Switcher     | Toggle between light and dark modes                            | ✅     |
-| Error Handling     | User-friendly error messages with retry button                 | ✅     |
+| Copy Button        | Easily copy the transformed text with success feedback          | ✅     |
+| Theme Switcher     | Toggle between light and dark modes                             | ✅     |
+| Error Handling     | User-friendly error messages with retry button                  | ✅     |
 | Loading States     | Visual feedback during transformation                           | ✅     |
 | Character Counter  | Shows remaining characters (500 max)                            | ✅     |
-| Sample Texts       | Pre-loaded example texts for testing                           | ✅     |
-| Transform History  | Stores last 5 transformations in localStorage                  | ✅     |
-| Keyboard Shortcuts | Ctrl+Enter to transform, Esc to clear                          | ✅     |
+| Sample Texts       | Pre-loaded example texts for testing                            | ✅     |
+| Transform History  | Stores last 5 transformations in localStorage                   | ✅     |
+| Keyboard Shortcuts | Ctrl+Enter to transform, Esc to clear                           | ✅     |
 
 ---
 
@@ -197,7 +197,8 @@ npm run format:check
 | **Phase 3** | Error handling, loading states, copy feature                | ✅     |
 | **Phase 4** | Documentation, environment setup, deployment ready          | ✅     |
 | **Phase 5** | Interface improvements (history, shortcuts, theme switcher) | ✅     |
-| **Phase 6** | Code quality (ESLint, Prettier, TypeScript)                | ✅     |
+| **Phase 6** | Code quality (ESLint, Prettier, TypeScript)                 | ✅     |
+| **Phase 7** | OpenAI API integration and testing                          | ✅     |
 
 ---
 
@@ -223,7 +224,7 @@ npm run format:check
 - The app uses Next.js 15 App Router for modern React Server Components
 - Tailwind CSS v4 provides efficient styling with class-based dark mode support
 - TypeScript ensures type safety throughout the application
-- The OpenAI integration uses GPT-4 Turbo for best results
+- The OpenAI integration uses GPT-4.1 nano model
 - Error boundaries and proper error handling ensure a smooth user experience
 - Component-based architecture for maintainability and reusability
 - Custom hooks for state management and keyboard shortcuts
