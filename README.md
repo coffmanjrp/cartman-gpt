@@ -42,10 +42,11 @@ npm install
 cp .env.local.example .env.local
 ```
 
-4. Edit `.env.local` and add your OpenAI API key:
+4. Edit `.env.local` and add your OpenAI API key and optionally set the model:
 
 ```
 OPENAI_API_KEY=your_openai_api_key_here
+OPENAI_MODEL=gpt-4o-mini  # Optional, defaults to gpt-4o-mini
 ```
 
 5. Run the development server:
@@ -60,7 +61,7 @@ npm run dev
 
 - **Frontend**: Next.js 15, React 19, TypeScript
 - **Styling**: Tailwind CSS v4
-- **AI**: OpenAI GPT-4o-mini
+- **AI**: OpenAI GPT (configurable via environment variable)
 - **Deployment**: Vercel (recommended)
 
 ## Usage

@@ -18,7 +18,7 @@
 ### Backend
 
 - **API Route**: Next.js App Router (`/api/transform`)
-- **AI Integration**: OpenAI API (GPT-4o-mini)
+- **AI Integration**: OpenAI API (configurable model via OPENAI_MODEL env var)
 - **Runtime**: Node.js 18+
 
 ---
@@ -217,6 +217,7 @@ npm run format:check
 
 1. **Environment Variables Required:**
    - `OPENAI_API_KEY`: Your OpenAI API key
+   - `OPENAI_MODEL`: (Optional) OpenAI model to use (defaults to gpt-4o-mini)
 
 2. **Recommended Platforms:**
    - Vercel (zero-config deployment)
@@ -235,7 +236,7 @@ npm run format:check
 - The app uses Next.js 15 App Router for modern React Server Components
 - Tailwind CSS v4 provides efficient styling with class-based dark mode support
 - TypeScript ensures type safety throughout the application
-- The OpenAI integration uses GPT-4o-mini model for conversational AI
+- The OpenAI integration uses a configurable model (set via OPENAI_MODEL env var, defaults to gpt-4o-mini)
 - Error boundaries and proper error handling ensure a smooth user experience
 - Component-based architecture for maintainability and reusability
 - Custom hooks for state management and keyboard shortcuts

@@ -67,9 +67,12 @@ export async function POST(request: NextRequest) {
 
 Remember: You're responding in a conversation, not just transforming text. React to what they're saying as Cartman would.`;
 
+    // Get model from environment variable or use default
+    const model = process.env.OPENAI_MODEL || 'gpt-4o-mini';
+
     // Call OpenAI API
     const completion = await openai.chat.completions.create({
-      model: 'gpt-4o-mini',
+      model,
       messages: [
         { role: 'system', content: systemPrompt },
         { role: 'user', content: text },
