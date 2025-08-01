@@ -38,7 +38,7 @@ export function useTransformHistory() {
   // Save history to localStorage whenever it changes
   useEffect(() => {
     if (!mounted) return;
-    
+
     try {
       localStorage.setItem(HISTORY_KEY, JSON.stringify(history));
     } catch (error) {

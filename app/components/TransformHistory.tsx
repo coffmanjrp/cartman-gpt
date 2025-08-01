@@ -33,7 +33,7 @@ export default function TransformHistory({
   return (
     <div>
       <div className="flex justify-between items-center mb-3">
-        <h3 className="text-sm font-medium text-gray-700 dark:text-gray-300">Recent Transforms</h3>
+        <h3 className="text-sm font-medium text-gray-700 dark:text-gray-300">Recent Chats</h3>
         <button
           onClick={onClearHistory}
           className="text-xs text-red-600 hover:text-red-700 dark:text-red-400 dark:hover:text-red-300"
@@ -49,7 +49,9 @@ export default function TransformHistory({
           >
             <div className="flex justify-between items-start">
               <button onClick={() => onSelectItem(item)} className="flex-1 text-left min-w-0">
-                <p className="text-sm text-gray-600 dark:text-gray-400 line-clamp-1">{item.original}</p>
+                <p className="text-sm text-gray-600 dark:text-gray-400 line-clamp-1">
+                  {item.original}
+                </p>
                 <p className="text-sm font-medium text-gray-900 dark:text-white mt-1 line-clamp-2">
                   {item.transformed}
                 </p>

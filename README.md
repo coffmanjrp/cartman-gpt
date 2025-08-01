@@ -8,7 +8,7 @@ Chat with Eric Cartman from South Park! This AI-powered chat application lets yo
 - **Authentic Personality**: Responses include Cartman's signature catchphrases, dramatic reactions, and egotistical behavior
 - **Sensor Levels**: Choose your comfort level with profanity:
   - **Mild**: Family-friendly (no profanity)
-  - **Medium**: Partial censorship (e.g., f**kin', b*tch)
+  - **Medium**: Partial censorship (e.g., f\**kin', b*tch)
   - **Raw**: Full uncensored Cartman
 - **Chat History**: View and revisit your previous conversations
 - **Modern UI**: Clean chat interface inspired by popular AI chat applications

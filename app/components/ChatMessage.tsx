@@ -18,12 +18,12 @@ export default function ChatMessage({ role, content, timestamp }: ChatMessagePro
             : 'bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white'
         }`}
       >
-        <p className="text-sm font-medium mb-1">
-          {isUser ? 'You' : 'Cartman'}
-        </p>
+        <p className="text-sm font-medium mb-1">{isUser ? 'You' : 'Cartman'}</p>
         <p className="whitespace-pre-wrap break-words">{content}</p>
         {timestamp && (
-          <p className={`text-xs mt-2 ${isUser ? 'text-blue-100' : 'text-gray-500 dark:text-gray-400'}`}>
+          <p
+            className={`text-xs mt-2 ${isUser ? 'text-blue-100' : 'text-gray-500 dark:text-gray-400'}`}
+          >
             {timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
           </p>
         )}

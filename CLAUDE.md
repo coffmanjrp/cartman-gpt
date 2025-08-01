@@ -2,7 +2,7 @@
 
 ## ✨ Overview
 
-"Cartman-GPT" is an AI-powered chat application that lets users have conversations with Eric Cartman from *South Park*. The app uses OpenAI's GPT model to generate authentic Cartman-style responses, complete with his signature personality traits, catchphrases, and optional profanity levels.
+"Cartman-GPT" is an AI-powered chat application that lets users have conversations with Eric Cartman from _South Park_. The app uses OpenAI's GPT model to generate authentic Cartman-style responses, complete with his signature personality traits, catchphrases, and optional profanity levels.
 
 ---
 
@@ -25,20 +25,20 @@
 
 ## 🌐 Core Features
 
-| Feature            | Description                                                     | Status |
-| ------------------ | --------------------------------------------------------------- | ------ |
-| AI Chat Interface  | Real-time conversation with Cartman character                   | ✅     |
-| Message History    | Chat messages displayed in conversation format                  | ✅     |
-| Sensor Level       | Choose censorship level: `Mild`, `Medium`, `Raw`               | ✅     |
-| Chat Sidebar       | Contains sensor level settings and conversation history         | ✅     |
-| Theme Switcher     | Toggle between light and dark modes                             | ✅     |
-| Error Handling     | User-friendly error messages in chat                            | ✅     |
-| Loading States     | Typing indicator while Cartman responds                         | ✅     |
-| Character Counter  | Shows remaining characters (500 max) in input                   | ✅     |
-| Sample Texts       | Pre-loaded conversation starters                                | ✅     |
-| Chat History       | Stores last 5 conversations in localStorage                     | ✅     |
-| Keyboard Shortcuts | Enter to send, Shift+Enter for newline, Esc to clear          | ✅     |
-| Responsive Design  | Mobile-friendly with collapsible sidebar                        | ✅     |
+| Feature            | Description                                             | Status |
+| ------------------ | ------------------------------------------------------- | ------ |
+| AI Chat Interface  | Real-time conversation with Cartman character           | ✅     |
+| Message History    | Chat messages displayed in conversation format          | ✅     |
+| Sensor Level       | Choose censorship level: `Mild`, `Medium`, `Raw`        | ✅     |
+| Chat Sidebar       | Contains sensor level settings and conversation history | ✅     |
+| Theme Switcher     | Toggle between light and dark modes                     | ✅     |
+| Error Handling     | User-friendly error messages in chat                    | ✅     |
+| Loading States     | Typing indicator while Cartman responds                 | ✅     |
+| Character Counter  | Shows remaining characters (500 max) in input           | ✅     |
+| Sample Texts       | Pre-loaded conversation starters                        | ✅     |
+| Chat History       | Stores last 5 conversations in localStorage             | ✅     |
+| Keyboard Shortcuts | Enter to send, Shift+Enter for newline, Esc to clear    | ✅     |
+| Responsive Design  | Mobile-friendly with collapsible sidebar                | ✅     |
 
 ---
 
