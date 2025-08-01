@@ -7,18 +7,17 @@ import InputArea from './components/InputArea';
 import ThemeToggle from './components/ThemeToggle';
 import { useTransformHistory, TransformHistoryItem } from './hooks/useTransformHistory';
 import { useKeyboardShortcuts } from './hooks/useKeyboardShortcuts';
+import { useSensorLevel } from './hooks/useSensorLevel';
 import { sampleTexts } from './constants/sampleTexts';
-
-type SensorLevel = 'mild' | 'medium' | 'raw';
 
 export default function Home() {
   const [inputText, setInputText] = useState('');
   const [messages, setMessages] = useState<Message[]>([]);
-  const [sensorLevel, setSensorLevel] = useState<SensorLevel>('medium');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
+  const { sensorLevel, setSensorLevel } = useSensorLevel();
   const { history, addToHistory, clearHistory, removeFromHistory } = useTransformHistory();
 
   const handleTransform = async () => {

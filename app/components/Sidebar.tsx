@@ -43,13 +43,12 @@ export default function Sidebar({
         } lg:translate-x-0`}
       >
         <div className="flex flex-col h-full">
-          {/* Sidebar Header */}
-          <div className="p-4 border-b border-gray-200 dark:border-gray-700">
-            <div className="flex items-center justify-between">
-              <h2 className="text-lg font-semibold text-gray-900 dark:text-white">Settings</h2>
+          {/* Mobile close button */}
+          <div className="lg:hidden p-4 border-b border-gray-200 dark:border-gray-700">
+            <div className="flex items-center justify-end">
               <button
                 onClick={onToggle}
-                className="lg:hidden p-2 rounded-md hover:bg-gray-200 dark:hover:bg-gray-700"
+                className="p-2 rounded-md hover:bg-gray-200 dark:hover:bg-gray-700"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path
