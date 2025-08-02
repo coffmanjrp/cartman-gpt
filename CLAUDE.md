@@ -41,6 +41,7 @@
 | Responsive Design  | Mobile-friendly with collapsible sidebar                | ✅     |
 | Dynamic Avatars    | Cartman's avatar changes based on emotion               | ✅     |
 | Emotion Detection  | AI detects and tags emotions in responses               | ✅     |
+| Legal Disclaimer   | Fan-made project disclaimer at bottom of interface      | ✅     |
 
 ---
 
@@ -251,6 +252,7 @@ Each emotion displays a different Cartman avatar:
 | **Phase 7** | OpenAI API integration and testing                          | ✅     |
 | **Phase 8** | Conversion to chat interface (Cartman-GPT)                  | ✅     |
 | **Phase 9** | Dynamic avatars with emotion detection                      | ✅     |
+| **Phase 10**| Legal disclaimer and final polish                           | ✅     |
 
 ---
 
@@ -269,6 +271,15 @@ Each emotion displays a different Cartman avatar:
    - Add monitoring/logging
    - Consider caching for common phrases
    - Set up proper CORS if needed
+
+---
+
+## ⚖️ Legal Disclaimer
+
+A fan-made project disclaimer is displayed at the bottom of the chat interface, clearly stating:
+"This is a fan-made project and is not affiliated with South Park, Comedy Central, or any related entities."
+
+This ensures users understand the unofficial nature of this project and respects the intellectual property of the original creators.
 
 ---
 

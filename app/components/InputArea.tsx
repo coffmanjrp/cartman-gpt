@@ -98,19 +98,24 @@ export default function InputArea({
             </button>
           </div>
         </div>
-        <div className="mt-2 flex justify-between items-center text-xs text-gray-500 dark:text-gray-400">
-          <p>
-            Press{' '}
-            <kbd className="px-1.5 py-0.5 text-xs font-semibold text-gray-800 bg-gray-100 border border-gray-200 rounded dark:bg-gray-800 dark:text-gray-100 dark:border-gray-600">
-              Enter
-            </kbd>{' '}
-            to send •{' '}
-            <kbd className="px-1.5 py-0.5 text-xs font-semibold text-gray-800 bg-gray-100 border border-gray-200 rounded dark:bg-gray-800 dark:text-gray-100 dark:border-gray-600">
-              Shift + Enter
-            </kbd>{' '}
-            for new line
+        <div className="mt-2 text-xs text-gray-500 dark:text-gray-400">
+          <div className="flex justify-between items-center">
+            <p>
+              Press{' '}
+              <kbd className="px-1.5 py-0.5 text-xs font-semibold text-gray-800 bg-gray-100 border border-gray-200 rounded dark:bg-gray-800 dark:text-gray-100 dark:border-gray-600">
+                Enter
+              </kbd>{' '}
+              to send •{' '}
+              <kbd className="px-1.5 py-0.5 text-xs font-semibold text-gray-800 bg-gray-100 border border-gray-200 rounded dark:bg-gray-800 dark:text-gray-100 dark:border-gray-600">
+                Shift + Enter
+              </kbd>{' '}
+              for new line
+            </p>
+            <p>Cartman-GPT can make mistakes.</p>
+          </div>
+          <p className="text-center mt-1">
+            This is a fan-made project and is not affiliated with South Park, Comedy Central, or any related entities.
           </p>
-          <p>Cartman-GPT can make mistakes.</p>
         </div>
       </div>
     </div>
