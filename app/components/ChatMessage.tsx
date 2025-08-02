@@ -1,16 +1,49 @@
 'use client';
 
+import Image from 'next/image';
+
 interface ChatMessageProps {
   role: 'user' | 'assistant';
   content: string;
   timestamp?: Date;
+  emotion?: 'neutral' | 'laughing' | 'surprised' | 'angry' | 'sad';
 }
 
-export default function ChatMessage({ role, content, timestamp }: ChatMessageProps) {
+export default function ChatMessage({ role, content, timestamp, emotion = 'neutral' }: ChatMessageProps) {
   const isUser = role === 'user';
+
+  // Map emotions to avatar images
+  const getAvatarImage = () => {
+    if (isUser) return null;
+    
+    switch (emotion) {
+      case 'laughing':
+        return '/cartman_1.png';
+      case 'surprised':
+        return '/cartman_2.png';
+      case 'angry':
+        return '/cartman_3.png';
+      case 'sad':
+        return '/cartman_4.png';
+      case 'neutral':
+      default:
+        return '/cartman_0.png';
+    }
+  };
 
   return (
     <div className={`flex ${isUser ? 'justify-end' : 'justify-start'} mb-4`}>
+      {!isUser && (
+        <div className="flex-shrink-0 mr-3">
+          <Image
+            src={getAvatarImage() || '/cartman_0.png'}
+            alt="Cartman"
+            width={40}
+            height={40}
+            className="rounded-full"
+          />
+        </div>
+      )}
       <div
         className={`max-w-[70%] rounded-lg px-4 py-3 ${
           isUser

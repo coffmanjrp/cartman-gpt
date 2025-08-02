@@ -64,6 +64,7 @@ export default function Home() {
         role: 'assistant',
         content: data.transformed,
         timestamp: new Date(),
+        emotion: data.emotion || 'neutral',
       };
       setMessages((prev) => [...prev, assistantMessage]);
 
@@ -72,6 +73,7 @@ export default function Home() {
         original: textToTransform,
         transformed: data.transformed,
         sensorLevel,
+        emotion: data.emotion || 'neutral',
       });
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Something went wrong');
@@ -105,6 +107,7 @@ export default function Home() {
       role: 'assistant',
       content: item.transformed,
       timestamp: new Date(),
+      emotion: item.emotion || 'neutral',
     };
     setMessages((prev) => [...prev, userMsg, assistantMsg]);
     setSensorLevel(item.sensorLevel);

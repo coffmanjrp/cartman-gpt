@@ -19,10 +19,22 @@ export const metadata: Metadata = {
     'Have a conversation with Eric Cartman from South Park. Experience his sarcastic, self-centered personality in an AI chat interface.',
   keywords: ['South Park', 'Eric Cartman', 'AI chat', 'chatbot', 'funny', 'entertainment'],
   authors: [{ name: 'Cartman-GPT' }],
+  icons: {
+    icon: '/favicon.ico',
+    apple: '/cartman_1.png',
+  },
   openGraph: {
     title: 'Cartman-GPT - Chat with Eric Cartman',
     description: 'Have a conversation with Eric Cartman from South Park',
     type: 'website',
+    images: [
+      {
+        url: '/cartman_1.png',
+        width: 800,
+        height: 800,
+        alt: 'Cartman-GPT',
+      },
+    ],
   },
 };
 
@@ -33,6 +45,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <link rel="manifest" href="/manifest.json" />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         suppressHydrationWarning

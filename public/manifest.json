@@ -1,0 +1,23 @@
+{
+  "name": "Cartman-GPT",
+  "short_name": "Cartman-GPT",
+  "description": "Chat with Eric Cartman from South Park",
+  "theme_color": "#1a1a1a",
+  "background_color": "#1a1a1a",
+  "display": "standalone",
+  "start_url": "/",
+  "icons": [
+    {
+      "src": "/cartman_1.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/cartman_2.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

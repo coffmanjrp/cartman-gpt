@@ -8,6 +8,7 @@ export interface Message {
   role: 'user' | 'assistant';
   content: string;
   timestamp: Date;
+  emotion?: 'neutral' | 'laughing' | 'surprised' | 'angry' | 'sad';
 }
 
 interface MessageListProps {
@@ -50,10 +51,20 @@ export default function MessageList({ messages, isLoading, error }: MessageListP
               role={message.role}
               content={message.content}
               timestamp={message.timestamp}
+              emotion={message.emotion}
             />
           ))}
           {isLoading && (
             <div className="flex justify-start mb-4">
+              <div className="flex-shrink-0 mr-3">
+                <img
+                  src="/cartman_0.png"
+                  alt="Cartman"
+                  width={40}
+                  height={40}
+                  className="rounded-full"
+                />
+              </div>
               <div className="max-w-[70%] rounded-lg px-4 py-3 bg-gray-100 dark:bg-gray-800">
                 <p className="text-sm font-medium mb-1 text-gray-900 dark:text-white">Cartman</p>
                 <div className="flex space-x-2">

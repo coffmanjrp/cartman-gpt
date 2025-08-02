@@ -8,6 +8,7 @@ const openai = new OpenAI({
 
 // Define types
 type SensorLevel = 'mild' | 'medium' | 'raw';
+type Emotion = 'neutral' | 'laughing' | 'surprised' | 'angry' | 'sad';
 
 interface TransformRequest {
   text: string;
@@ -19,6 +20,7 @@ interface TransformResponse {
   transformed: string;
   original: string;
   sensorLevel: SensorLevel;
+  emotion: Emotion;
 }
 
 // Sensor level instructions
@@ -65,6 +67,15 @@ export async function POST(request: NextRequest) {
 - Sometimes go on tangents about your elaborate plans or conspiracy theories
 - ${getSensorInstructions(sensorLevel)}
 
+IMPORTANT: Start your response with an emotion tag in square brackets. Choose ONE from: [neutral], [laughing], [surprised], [angry], or [sad].
+- Use [laughing] when you find something hilarious or are mocking someone
+- Use [surprised] when shocked, confused, or caught off guard
+- Use [angry] when upset, annoyed, or frustrated
+- Use [sad] when feeling sorry for yourself or playing the victim
+- Use [neutral] for normal conversation
+
+Example: "[laughing] BWAHAHA! You seriously think that's gonna work?!"
+
 Remember: You're responding in a conversation, not just transforming text. React to what they're saying as Cartman would.`;
 
     // Get model from environment variable or use default
@@ -83,11 +94,22 @@ Remember: You're responding in a conversation, not just transforming text. React
 
     const transformedText = completion.choices[0]?.message?.content || '';
 
+    // Extract emotion tag from response
+    let emotion: Emotion = 'neutral';
+    let cleanTransformed = transformedText;
+    
+    const emotionMatch = transformedText.match(/^\[(neutral|laughing|surprised|angry|sad)\]/);
+    if (emotionMatch) {
+      emotion = emotionMatch[1] as Emotion;
+      cleanTransformed = transformedText.replace(emotionMatch[0], '').trim();
+    }
+
     // Return response
     const response: TransformResponse = {
-      transformed: transformedText,
+      transformed: cleanTransformed,
       original: text,
       sensorLevel,
+      emotion,
     };
 
     return NextResponse.json(response);

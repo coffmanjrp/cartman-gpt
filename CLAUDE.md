@@ -39,6 +39,8 @@
 | Chat History       | Stores last 5 conversations in localStorage             | ✅     |
 | Keyboard Shortcuts | Enter to send, Shift+Enter for newline, Esc to clear    | ✅     |
 | Responsive Design  | Mobile-friendly with collapsible sidebar                | ✅     |
+| Dynamic Avatars    | Cartman's avatar changes based on emotion               | ✅     |
+| Emotion Detection  | AI detects and tags emotions in responses               | ✅     |
 
 ---
 
@@ -65,6 +67,15 @@ You are Eric Cartman from South Park. You're having a conversation with someone.
 - Be dismissive of others' feelings while being overly sensitive about your own
 - Sometimes go on tangents about your elaborate plans or conspiracy theories
 - [Sensor level instructions based on selection]
+
+IMPORTANT: Start your response with an emotion tag in square brackets. Choose ONE from: [neutral], [laughing], [surprised], [angry], or [sad].
+- Use [laughing] when you find something hilarious or are mocking someone
+- Use [surprised] when shocked, confused, or caught off guard
+- Use [angry] when upset, annoyed, or frustrated
+- Use [sad] when feeling sorry for yourself or playing the victim
+- Use [neutral] for normal conversation
+
+Example: "[laughing] BWAHAHA! You seriously think that's gonna work?!"
 
 Remember: You're responding in a conversation, not just transforming text. React to what they're saying as Cartman would.
 ```
@@ -100,13 +111,21 @@ cartman-gpt/
 │   │   └── ThemeContext.tsx   # Theme management context
 │   ├── hooks/
 │   │   ├── useTransformHistory.ts   # History management hook
-│   │   └── useKeyboardShortcuts.ts  # Keyboard shortcuts hook
+│   │   ├── useKeyboardShortcuts.ts  # Keyboard shortcuts hook
+│   │   ├── useSensorLevel.ts        # Sensor level persistence hook
+│   │   └── useTransformHistory.ts   # History management hook
 │   ├── constants/
 │   │   └── sampleTexts.ts     # Sample text definitions
 │   ├── globals.css             # Global styles with Tailwind CSS v4
 │   ├── layout.tsx              # Root layout with theme provider
 │   └── page.tsx                # Main UI component
 ├── public/                     # Static assets
+│   ├── cartman_0.png          # Neutral emotion avatar
+│   ├── cartman_1.png          # Laughing emotion avatar
+│   ├── cartman_2.png          # Surprised emotion avatar
+│   ├── cartman_3.png          # Angry emotion avatar
+│   ├── cartman_4.png          # Sad emotion avatar
+│   └── manifest.json          # PWA manifest file
 ├── .env.local.example          # Environment variables template
 ├── .gitignore                  # Git ignore rules
 ├── .prettierrc                 # Prettier configuration
@@ -141,9 +160,10 @@ cartman-gpt/
 
 ```typescript
 {
-  transformed: string; // Cartman-style text
-  original: string; // Original input
-  sensorLevel: string; // Applied sensor level
+  transformed: string;    // Cartman-style text (emotion tag removed)
+  original: string;       // Original input
+  sensorLevel: string;    // Applied sensor level
+  emotion: 'neutral' | 'laughing' | 'surprised' | 'angry' | 'sad';  // Detected emotion
 }
 ```
 
@@ -186,6 +206,26 @@ npm run format:check
 
 ---
 
+## 🎭 Emotion System
+
+### Emotion Detection
+The AI automatically detects Cartman's emotional state and tags each response with one of five emotions:
+- **neutral**: Normal conversation
+- **laughing**: When mocking or finding something hilarious
+- **surprised**: When shocked or caught off guard
+- **angry**: When upset or frustrated
+- **sad**: When playing the victim
+
+### Avatar Mapping
+Each emotion displays a different Cartman avatar:
+- `cartman_0.png`: Neutral (default)
+- `cartman_1.png`: Laughing
+- `cartman_2.png`: Surprised
+- `cartman_3.png`: Angry
+- `cartman_4.png`: Sad (crying)
+
+---
+
 ## 🌟 Future Enhancements
 
 - **Character Expansion**: Add Kyle, Stan, Kenny, and other characters
@@ -210,6 +250,7 @@ npm run format:check
 | **Phase 6** | Code quality (ESLint, Prettier, TypeScript)                 | ✅     |
 | **Phase 7** | OpenAI API integration and testing                          | ✅     |
 | **Phase 8** | Conversion to chat interface (Cartman-GPT)                  | ✅     |
+| **Phase 9** | Dynamic avatars with emotion detection                      | ✅     |
 
 ---
 

@@ -8,6 +8,7 @@ export interface TransformHistoryItem {
   transformed: string;
   sensorLevel: 'mild' | 'medium' | 'raw';
   timestamp: number;
+  emotion?: 'neutral' | 'laughing' | 'surprised' | 'angry' | 'sad';
 }
 
 const HISTORY_KEY = 'cartmanify_history';
